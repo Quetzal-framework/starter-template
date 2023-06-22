@@ -1,8 +1,7 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
-// https://github.com/microsoft/vscode-dev-containers/tree/v0.205.2/containers/cpp
 {
-	"name": "C++ DevContainer",
+	"name": "Quetzal C++ DevContainer",
 	"image": "arnaudbecheler/quetzal-nest:latest",
+	// enable debugging inside a Docker container:
 	"runArgs": [
 		"--cap-add=SYS_PTRACE",
 		"--security-opt",
@@ -12,7 +11,9 @@
 	"customizations": {
 		"vscode": {
 			"settings": {
+				// Enable automatic CMake configuration when opening a CMake project
 				"cmake.configureOnOpen": true,
+				// VS Code will automatically format the code in your source files when you save them.
 				"editor.formatOnSave": true
 			},
 			"extensions": [
@@ -28,17 +29,16 @@
 			]
 		}
 	},
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
-	// Use 'postCreateCommand' to run commands after the container is created.
-	//"postCreateCommand": "uname -a",
-	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-	//"remoteUser": "vscode",
+	// This allows the container to access and work with the files in the local workspace.
 	"workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/${localWorkspaceFolderBasename},type=bind,consistency=delegated",
+	// This ensures that the container recognizes the workspace as its working directory.
 	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
 	"features": {
+		// This allows you to use Git commands and interact with Git repositories from within the container.
 		"git": "latest",
+		// Include the latest version of the Git Large File Storage (LFS) feature in the container.
 		"git-lfs": "latest",
+		// Enables automation, system configuration, and customization possibilities alongside C++ development.
 		"powershell": "latest"
 	}
 }
