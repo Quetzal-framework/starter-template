@@ -6,7 +6,7 @@
   add_executable(${exe_name} ${src_name})
 
   # Require the standard
-  target_compile_features(${exe_name} PRIVATE cxx_std_20)
+  target_compile_features(${exe_name} PUBLIC cxx_std_20)
 
   # Link to targets and dependencies
   target_link_libraries(${exe_name} quetzal::quetzal boost::boost GDAL::GDAL range-v3::range-v3)
